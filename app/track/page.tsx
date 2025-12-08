@@ -168,6 +168,18 @@ export default function TrackPage() {
         syncRowsFromInput(rawInput, value);
     };
 
+    // 🔹 NÚT COPY TOÀN BỘ CỘT TRACKING
+    const handleCopyTracking = async () => {
+        const text = rows.map((r) => r.result ?? "").join("\n");
+
+        try {
+            await navigator.clipboard.writeText(text);
+            // Nếu muốn có thông báo thì có thể thêm toast / state ở đây
+        } catch (err) {
+            console.error("Failed to copy tracking list:", err);
+        }
+    };
+
     const handleFetch = async () => {
         if (!rows.length) return;
 
@@ -226,8 +238,7 @@ export default function TrackPage() {
                 const json = await res.json();
                 merchizeResults = (json.results ?? []) as MerchizeTrackResultItem[];
             } catch (err: any) {
-                merchizeError =
-                    err?.message ?? "Lỗi khi gọi API Merchize";
+                merchizeError = err?.message ?? "Lỗi khi gọi API Merchize";
             }
         }
 
@@ -248,8 +259,7 @@ export default function TrackPage() {
                 const json = await res.json();
                 dreamshipResults = (json.results ?? []) as DreamshipTrackResultItem[];
             } catch (err: any) {
-                dreamshipError =
-                    err?.message ?? "Lỗi khi gọi API Dreamship";
+                dreamshipError = err?.message ?? "Lỗi khi gọi API Dreamship";
             }
         }
 
@@ -483,7 +493,16 @@ export default function TrackPage() {
                                             Hãng vận chuyển
                                         </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[10rem]">
-                                            Tracking
+                                            <div className="flex items-center gap-1">
+                                                <span>Tracking</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={handleCopyTracking}
+                                                    className="text-[10px] md:text-xs px-1 py-0.5 border border-slate-600 rounded hover:bg-slate-800"
+                                                >
+                                                    Copy
+                                                </button>
+                                            </div>
                                         </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[5rem]">
                                             Trạng thái
