@@ -30,14 +30,33 @@ export type MerchizePackage = {
     [key: string]: any;
 };
 
+export type MerchizeOrderDetailPackage = {
+    _id: string;
+    code: string;
+    order_status: string;
+    external_number: string;
+    identifier: string;
+    shipping_cost: number;
+    created: string;
+    shipment_statuses: any[];
+    invoice: any;
+    fulfillment_cost: any;
+    items: [any];
+    fulfill_manually: boolean;
+    // cho phép thêm field khác không được document
+
+};
+
+
+
 export type MerchizeApiResponse = {
     success: boolean;
     message?: string;
-    data?: MerchizePackage[];
+    data?: any[];
 };
 
 export async function getMerchizeTrackings(
-    orders: MerchizeOrderInput[]
+    orders: MerchizeOrderInput[],
 ): Promise<MerchizeApiResponse> {
     const baseUrl = process.env.MERCHIZE_BASE_URL;
     const token = process.env.MERCHIZE_ACCESS_TOKEN;
@@ -50,6 +69,7 @@ export async function getMerchizeTrackings(
         throw new Error("MERCHIZE_ACCESS_TOKEN is not set in environment");
     }
 
+    console.log("extermal : ", orders);
     const res = await fetch(
         `${baseUrl}/order/external/orders/list-orders-tracking`,
         {
@@ -68,6 +88,48 @@ export async function getMerchizeTrackings(
         throw new Error(`Merchize API error: ${res.status} ${text}`);
     }
 
+
     const data = (await res.json()) as MerchizeApiResponse;
+    console.log(data);
+
+    return data;
+}
+
+export async function getOrderDetails(
+    orders: MerchizeOrderInput[],
+): Promise<MerchizeApiResponse> {
+    const baseUrl = process.env.MERCHIZE_BASE_URL;
+    const token = process.env.MERCHIZE_ACCESS_TOKEN;
+
+    if (!baseUrl) {
+        throw new Error("MERCHIZE_BASE_URL is not set in environment");
+    }
+
+    if (!token) {
+        throw new Error("MERCHIZE_ACCESS_TOKEN is not set in environment");
+    }
+
+    console.log("extermal : ", orders);
+    const res = await fetch(
+        `${baseUrl}/order/external/orders/list-orders-detail`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ orders }),
+            cache: "no-store",
+        }
+    );
+
+    if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(`Merchize API error: ${res.status} ${text}`);
+    }
+
+
+    const data = (await res.json()) as MerchizeApiResponse;
+
     return data;
 }

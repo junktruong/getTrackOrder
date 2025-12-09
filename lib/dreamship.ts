@@ -20,29 +20,33 @@ export type DreamshipFulfillment = {
 
 export type DreamshipOrder = {
     id: number;
-    fulfillments?: DreamshipFulfillment[];
     reference_id?: string;
     status?: string;
     created_at?: string;
+    fulfillments?: DreamshipFulfillment[];
     [key: string]: any;
 };
+
+const DREAMSHIP_BASE_URL =
+    process.env.DREAMSHIP_BASE_URL || "https://api.dreamship.com";
+const DREAMSHIP_TOKEN = process.env.DREAMSHIP_ACCESS_TOKEN;
+
+if (!DREAMSHIP_TOKEN) {
+    console.warn("DREAMSHIP_ACCESS_TOKEN is not set in environment");
+}
 
 export async function getDreamshipOrder(
     orderId: string | number
 ): Promise<DreamshipOrder> {
-    const baseUrl =
-        process.env.DREAMSHIP_BASE_URL || "https://api.dreamship.com";
-    const token = process.env.DREAMSHIP_ACCESS_TOKEN;
-
-    if (!token) {
+    if (!DREAMSHIP_TOKEN) {
         throw new Error("DREAMSHIP_ACCESS_TOKEN is not set in environment");
     }
 
-    const res = await fetch(`${baseUrl}/v1/orders/${orderId}/`, {
+    const res = await fetch(`${DREAMSHIP_BASE_URL}/v1/orders/${orderId}/`, {
         method: "GET",
         headers: {
             accept: "application/json",
-            authorization: `Bearer ${token}`,
+            authorization: `Bearer ${DREAMSHIP_TOKEN}`,
         },
         cache: "no-store",
     });
@@ -54,4 +58,37 @@ export async function getDreamshipOrder(
 
     const data = (await res.json()) as DreamshipOrder;
     return data;
+}
+
+// 🔹 HÀM MỚI: tìm đơn theo reference_id
+export async function findDreamshipOrderByReferenceId(
+    referenceId: string
+): Promise<DreamshipOrder | null> {
+    if (!DREAMSHIP_TOKEN) {
+        throw new Error("DREAMSHIP_ACCESS_TOKEN is not set in environment");
+    }
+
+    const url =
+        `${DREAMSHIP_BASE_URL}/v1/orders/?reference_id=` +
+        encodeURIComponent(referenceId);
+
+    const res = await fetch(url, {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            authorization: `Bearer ${DREAMSHIP_TOKEN}`,
+        },
+        cache: "no-store",
+    });
+
+    if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(`Dreamship API error: ${res.status} ${text}`);
+    }
+
+    // const data = await res.json();
+
+    const data = (await res.json()) as DreamshipOrder;
+    return data;
+
 }

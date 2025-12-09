@@ -1,1112 +1,295 @@
 {
-    "success": true,
-    "results": [
+    "data": [
         {
-            "input": "RA-68793-93938",
-            "success": true,
-            "pkg": {
-                "_id": "6935ae076e6549d6b936a164",
-                "status": "fulfilled",
-                "service": "Merchize",
-                "name": "RA-68793-93938-F1",
-                "shipping_cost": 6.99,
-                "created": "2025-12-07T16:40:39.020Z",
-                "items": [
-                    {
-                        "production_time_max": 3,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "GLSOVN2SP000JA07"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 4.5,
-                        "product_type": "2S_GLASS_ORN_0406MTM",
-                        "size": "Circle",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "GLSOVN2SP000JA07",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "GLSOVN2SP000JA07": {
-                                "_id": "69098443dff069496d980d8f",
-                                "sku": "GLSOVN2SP000JA07",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "artwork_positions": [],
-                                "attributes": [
-                                    {
-                                        "name": "label",
-                                        "type": "label",
-                                        "value_text": "2-side Printed",
-                                        "value_code": "2-sideprinted"
-                                    },
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Circle",
-                                        "value_code": "circle"
-                                    }
-                                ],
-                                "create_at": "2025-11-04T04:04:18.388Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "65b9c8e887fad15125753d42",
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "GLSOVN",
-                                    "title": "Glass Ornament",
-                                    "thumbnail_link": "https://website-static.merchize.com/uploads/34421697683826945.jpeg",
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "warehouse_fee": {
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    },
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "printing_methods": [],
-                                    "double_sided_design_fee": 0
-                                },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 6.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 8.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 13,
-                                        "additional_item": 2.5
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tax": {
-                                    "US": 0.3
-                                },
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 4.5
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": 4.25
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": 4
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 4.5
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": 4.25
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": 4
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.99,
-                                                    "additional_item": 1.5
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "updated_at": "2025-11-04T09:30:51.495Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": [],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ]
+            "address": {
+                "first_name": "ANDREW",
+                "last_name": "HOENIG",
+                "company": null,
+                "phone": "716-495-0922",
+                "street1": "319 CHRISTIANA ST",
+                "street2": "",
+                "city": "NORTH TONAWANDA",
+                "state": "NY",
+                "country": "US",
+                "zip": "14120",
+                "verified": true,
+                "verified_delivery": true,
+                "validated": true,
+                "pii_removed": false
+            },
+            "cost": "13.96",
+            "created_at": "2025-12-08T04:19:09.661680Z",
+            "discounted_subtotal_cost": "13.96",
+            "fulfillments": [
+                {
+                    "id": 511026624,
+                    "line_items": [
+                        {
+                            "active_quantity": 1,
+                            "discounted_item_cost": "9.18",
+                            "discounted_product_cost": "3.79",
+                            "estimated_ship_date": "2025-12-13T02:00:00Z",
+                            "id": 373141510,
+                            "item_cost": "10.18",
+                            "item_variant": 16029,
+                            "line_item_ticket": null,
+                            "line_item_metas": [],
+                            "print_cost": "0.00",
+                            "product_cost": "4.79",
+                            "product_variant": 43689564,
+                            "production_status": "normal",
+                            "quantity": 1,
+                            "reference_id": "114-2545030-4324234-1",
+                            "ship_by": "2025-12-13T02:00:00Z",
+                            "shipping_cost": "4.99",
+                            "subtotal_cost": "10.18",
+                            "total_cost": "9.18",
+                            "vat_unit_value": "0.00",
+                            "shipping_label_url": "",
+                            "shipping_label_carrier": "",
+                            "shipping_label_tracking_number": "",
+                            "platform_title": null,
+                            "platform_id": null,
+                            "product_platform_id": null,
+                            "product_variant_platform_id": null,
+                            "deleted": false,
+                            "discounts": [
+                                {
+                                    "name": "Subscription",
+                                    "quantity": 1,
+                                    "subtotal_amount": "1.00",
+                                    "total_amount": "1.00",
+                                    "type": "subscription"
                                 }
-                            }
-                        },
-                        "variant_title": "2-side printed glass ornament / Random / Circle"
-                    },
-                    {
-                        "production_time_max": 2,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "PDACVN000000FB46"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 0.6,
-                        "product_type": "PRO_ACCESS_00NO",
-                        "size": "RBow12x12x3",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "PDACVN000000FB46",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "PDACVN000000FB46": {
-                                "_id": "68f077ad4617642761ab0f9f",
-                                "sku": "PDACVN000000FB46",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "attributes": [
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Red Box with Bow 12x12x3",
-                                        "value_code": "redboxwithbow12x12x3"
-                                    }
-                                ],
-                                "create_at": "2025-10-16T04:29:59.845Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "68f077ac461764760eab0f32",
-                                    "double_sided_design_fee": 0,
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "printing_methods": [],
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "PDACVN",
-                                    "thumbnail_link": "https://public-artworks.merchize.com/merchize-website/website-merchize-1050633.8310226337-1762918072879.jpeg",
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "title": "Product Accessories",
-                                    "warehouse_fee": {
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    }
-                                },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 5.99,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 14.49,
-                                        "additional_item": 1
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 0.6
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": null
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": null
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 1.1
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": null
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": null
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.49,
-                                                    "additional_item": 0
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "updated_at": "2025-11-14T09:14:43.757Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": []
-                                },
-                                "tax": {
-                                    "US": 0
-                                },
-                                "artwork_positions": null
-                            }
-                        },
-                        "variant_title": "Product Accessories / Random / Red Box with Bow 12x12x3"
-                    }
-                ],
-                "has_tracking": false
-            }
-        },
-        {
-            "input": "RW-38578-52754",
-            "success": true,
-            "pkg": {
-                "_id": "6935ae5da7bb9f6484ce08df",
-                "status": "fulfilled",
-                "service": "Merchize",
-                "name": "RW-38578-52754-F1",
-                "shipping_cost": 6.99,
-                "created": "2025-12-07T16:42:05.362Z",
-                "items": [
-                    {
-                        "production_time_max": 2,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "PDACVN000000FB46"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 0.6,
-                        "product_type": "PRO_ACCESS_00NO",
-                        "size": "RBow12x12x3",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "PDACVN000000FB46",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "PDACVN000000FB46": {
-                                "_id": "68f077ad4617642761ab0f9f",
-                                "sku": "PDACVN000000FB46",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "attributes": [
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Red Box with Bow 12x12x3",
-                                        "value_code": "redboxwithbow12x12x3"
-                                    }
-                                ],
-                                "create_at": "2025-10-16T04:29:59.845Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "68f077ac461764760eab0f32",
-                                    "double_sided_design_fee": 0,
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "printing_methods": [],
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "PDACVN",
-                                    "thumbnail_link": "https://public-artworks.merchize.com/merchize-website/website-merchize-1050633.8310226337-1762918072879.jpeg",
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "title": "Product Accessories",
-                                    "warehouse_fee": {
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    }
-                                },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 5.99,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 14.49,
-                                        "additional_item": 1
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 0.6
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": null
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": null
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 1.1
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": null
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": null
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.49,
-                                                    "additional_item": 0
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "updated_at": "2025-11-14T09:14:43.757Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": []
-                                },
-                                "tax": {
-                                    "US": 0
-                                },
-                                "artwork_positions": null
-                            }
-                        },
-                        "variant_title": "Product Accessories / Random / Red Box with Bow 12x12x3"
-                    },
-                    {
-                        "production_time_max": 3,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "GLSOVN2SP000JA07"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 4.5,
-                        "product_type": "2S_GLASS_ORN_0406MTM",
-                        "size": "Circle",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "GLSOVN2SP000JA07",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "GLSOVN2SP000JA07": {
-                                "_id": "69098443dff069496d980d8f",
-                                "sku": "GLSOVN2SP000JA07",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "artwork_positions": [],
-                                "attributes": [
-                                    {
-                                        "name": "label",
-                                        "type": "label",
-                                        "value_text": "2-side Printed",
-                                        "value_code": "2-sideprinted"
-                                    },
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Circle",
-                                        "value_code": "circle"
-                                    }
-                                ],
-                                "create_at": "2025-11-04T04:04:18.388Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "65b9c8e887fad15125753d42",
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "GLSOVN",
-                                    "title": "Glass Ornament",
-                                    "thumbnail_link": "https://website-static.merchize.com/uploads/34421697683826945.jpeg",
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "warehouse_fee": {
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    },
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "printing_methods": [],
-                                    "double_sided_design_fee": 0
-                                },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 6.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 8.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 13,
-                                        "additional_item": 2.5
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tax": {
-                                    "US": 0.3
-                                },
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 4.5
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": 4.25
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": 4
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 4.5
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": 4.25
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": 4
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.99,
-                                                    "additional_item": 1.5
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "updated_at": "2025-11-04T09:30:51.495Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": [],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ]
+                            ],
+                            "partial_refunds": [],
+                            "print_areas": [
+                                {
+                                    "key": "front",
+                                    "proof_url": "",
+                                    "url": "https://s.upanh.net/2025/12/08/114-2545030-4324234-1.png",
+                                    "url_error": ""
                                 }
-                            }
+                            ]
                         },
-                        "variant_title": "2-side printed glass ornament / Random / Circle"
-                    }
-                ],
-                "has_tracking": false
-            }
-        },
-        {
-            "input": "RW-36946-46564",
-            "success": false,
-            "error": "Không tìm thấy package tương ứng",
-            "pkg": null
-        },
-        {
-            "input": "RD-33662-63442",
-            "success": true,
-            "pkg": {
-                "_id": "6935adf46e65498df836a0c8",
-                "status": "fulfilled",
-                "service": "Merchize",
-                "name": "RD-33662-63442-F1",
-                "shipping_cost": 6.99,
-                "created": "2025-12-07T16:40:20.211Z",
-                "items": [
-                    {
-                        "production_time_max": 2,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "PDACVN000000FB46"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 0.6,
-                        "product_type": "PRO_ACCESS_00NO",
-                        "size": "RBow12x12x3",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "PDACVN000000FB46",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "PDACVN000000FB46": {
-                                "_id": "68f077ad4617642761ab0f9f",
-                                "sku": "PDACVN000000FB46",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "attributes": [
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Red Box with Bow 12x12x3",
-                                        "value_code": "redboxwithbow12x12x3"
-                                    }
-                                ],
-                                "create_at": "2025-10-16T04:29:59.845Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "68f077ac461764760eab0f32",
-                                    "double_sided_design_fee": 0,
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "printing_methods": [],
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "PDACVN",
-                                    "thumbnail_link": "https://public-artworks.merchize.com/merchize-website/website-merchize-1050633.8310226337-1762918072879.jpeg",
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "title": "Product Accessories",
-                                    "warehouse_fee": {
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    }
+                        {
+                            "active_quantity": 1,
+                            "discounted_item_cost": "4.78",
+                            "discounted_product_cost": "3.79",
+                            "estimated_ship_date": "2025-12-13T02:00:00Z",
+                            "id": 373141514,
+                            "item_cost": "10.18",
+                            "item_variant": 16029,
+                            "line_item_ticket": null,
+                            "line_item_metas": [],
+                            "print_cost": "0.00",
+                            "product_cost": "4.79",
+                            "product_variant": 43689565,
+                            "production_status": "normal",
+                            "quantity": 1,
+                            "reference_id": "114-2545030-4324234-2",
+                            "ship_by": "2025-12-13T02:00:00Z",
+                            "shipping_cost": "4.99",
+                            "subtotal_cost": "10.18",
+                            "total_cost": "4.78",
+                            "vat_unit_value": "0.00",
+                            "shipping_label_url": "",
+                            "shipping_label_carrier": "",
+                            "shipping_label_tracking_number": "",
+                            "platform_title": null,
+                            "platform_id": null,
+                            "product_platform_id": null,
+                            "product_variant_platform_id": null,
+                            "deleted": false,
+                            "discounts": [
+                                {
+                                    "name": "Subscription",
+                                    "quantity": 1,
+                                    "subtotal_amount": "1.00",
+                                    "total_amount": "1.00",
+                                    "type": "subscription"
                                 },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 5.99,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 7.49,
-                                        "additional_item": 0.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 14.49,
-                                        "additional_item": 1
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 0.6
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": null
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": null
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 1.1
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": null
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": null
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.49,
-                                                    "additional_item": 0
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                {
+                                    "name": "Shipping",
+                                    "quantity": 1,
+                                    "subtotal_amount": "4.00",
+                                    "total_amount": "4.00",
+                                    "type": "shipping_v4"
                                 },
-                                "updated_at": "2025-11-14T09:14:43.757Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": []
-                                },
-                                "tax": {
-                                    "US": 0
-                                },
-                                "artwork_positions": null
-                            }
-                        },
-                        "variant_title": "Product Accessories / Random / Red Box with Bow 12x12x3"
-                    },
-                    {
-                        "production_time_max": 3,
-                        "currency": "USD",
-                        "quantity": 1,
-                        "ffm_discount_amount": 0,
-                        "multiple_mapped_sku": [
-                            "GLSOVN2SP000JA07"
-                        ],
-                        "sku": "",
-                        "fulfillment_cost": 4.5,
-                        "product_type": "2S_GLASS_ORN_0406MTM",
-                        "size": "Circle",
-                        "color": "",
-                        "ffm_mapped_catalog_sku": "GLSOVN2SP000JA07",
-                        "taxonomy": "Decor",
-                        "second_rate": 1.5,
-                        "first_rate": 5.49,
-                        "product_label": "product",
-                        "units_per_variant": 1,
-                        "fulfilled_quantity": 1,
-                        "captured_catalogs": {
-                            "GLSOVN2SP000JA07": {
-                                "_id": "69098443dff069496d980d8f",
-                                "sku": "GLSOVN2SP000JA07",
-                                "applied_products": [],
-                                "applied_stores": [],
-                                "artwork_positions": [],
-                                "attributes": [
-                                    {
-                                        "name": "label",
-                                        "type": "label",
-                                        "value_text": "2-side Printed",
-                                        "value_code": "2-sideprinted"
-                                    },
-                                    {
-                                        "name": "size",
-                                        "type": "size",
-                                        "value_text": "Circle",
-                                        "value_code": "circle"
-                                    }
-                                ],
-                                "create_at": "2025-11-04T04:04:18.388Z",
-                                "dimensions": [],
-                                "product": {
-                                    "_id": "65b9c8e887fad15125753d42",
-                                    "production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "sku": "GLSOVN",
-                                    "title": "Glass Ornament",
-                                    "thumbnail_link": "https://website-static.merchize.com/uploads/34421697683826945.jpeg",
-                                    "fulfillment_location": {
-                                        "name": "Vietnam",
-                                        "code": "VN"
-                                    },
-                                    "warehouse_fee": {
-                                        "tiktok_shipping": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "handling_fee",
-                                                "price": 0.15
-                                            },
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.8
-                                            }
-                                        ],
-                                        "seller_shipping_GB": [
-                                            {
-                                                "warehouse": "VN",
-                                                "type": "tracking_fee",
-                                                "price": 0.5
-                                            }
-                                        ],
-                                        "seller_shipping": [],
-                                        "tiktok_shipping_GB": []
-                                    },
-                                    "tiktok_production_time": {
-                                        "min": 1,
-                                        "max": 2
-                                    },
-                                    "printing_methods": [],
-                                    "double_sided_design_fee": 0
-                                },
-                                "scope": "all",
-                                "shipping_prices": [
-                                    {
-                                        "to_zone": "US",
-                                        "first_item": 5.49,
-                                        "additional_item": 1.5
-                                    },
-                                    {
-                                        "to_zone": "EU",
-                                        "first_item": 7,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "GB",
-                                        "first_item": 6.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "CA",
-                                        "first_item": 8.25,
-                                        "additional_item": 2.5
-                                    },
-                                    {
-                                        "to_zone": "ROW",
-                                        "first_item": 13,
-                                        "additional_item": 2.5
-                                    }
-                                ],
-                                "status": "active",
-                                "stock": -1,
-                                "tax": {
-                                    "US": 0.3
-                                },
-                                "tiers": [
-                                    {
-                                        "name": "tier1",
-                                        "price": 4.5
-                                    },
-                                    {
-                                        "name": "tier2",
-                                        "price": 4.25
-                                    },
-                                    {
-                                        "name": "tier3",
-                                        "price": 4
-                                    }
-                                ],
-                                "tiktok_warehouse_pricing": {
-                                    "seller_shipping": [],
-                                    "tiktok_shipping": [
-                                        {
-                                            "warehouse": "VN",
-                                            "base_cost": [
-                                                {
-                                                    "name": "tier1",
-                                                    "price": 4.5
-                                                },
-                                                {
-                                                    "name": "tier2",
-                                                    "price": 4.25
-                                                },
-                                                {
-                                                    "name": "tier3",
-                                                    "price": 4
-                                                }
-                                            ],
-                                            "shipping_prices": [
-                                                {
-                                                    "to_zone": "US",
-                                                    "first_item": 3.99,
-                                                    "additional_item": 1.5
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "updated_at": "2025-11-04T09:30:51.495Z",
-                                "warehouse": {
-                                    "tiktok_shipping": [
-                                        "VN"
-                                    ],
-                                    "seller_shipping": [
-                                        "VN"
-                                    ],
-                                    "tiktok_shipping_GB": [],
-                                    "seller_shipping_GB": [
-                                        "VN"
-                                    ]
+                                {
+                                    "name": "Holiday Shipping",
+                                    "quantity": 1,
+                                    "subtotal_amount": "0.40",
+                                    "total_amount": "0.40",
+                                    "type": "holiday_shipping"
                                 }
-                            }
+                            ],
+                            "partial_refunds": [],
+                            "print_areas": [
+                                {
+                                    "key": "front",
+                                    "proof_url": "",
+                                    "url": "https://s.upanh.net/2025/12/08/114-2545030-4324234-2.png",
+                                    "url_error": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "trackings": [
+                        {
+                            "carrier": "usps",
+                            "carrier_url": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9400136208303421067351",
+                            "created_at": "2025-12-08T15:39:23.766590Z",
+                            "id": 6605735,
+                            "status": "pre_transit",
+                            "tracking_number": "9400136208303421067351",
+                            "tracking_url": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9400136208303421067351"
+                        }
+                    ]
+                }
+            ],
+            "id": 323925240,
+            "line_items": [
+                {
+                    "active_quantity": 1,
+                    "discounted_item_cost": "9.18",
+                    "discounted_product_cost": "3.79",
+                    "estimated_ship_date": "2025-12-13T02:00:00Z",
+                    "id": 373141510,
+                    "item_cost": "10.18",
+                    "item_variant": 16029,
+                    "line_item_ticket": null,
+                    "line_item_metas": [],
+                    "print_cost": "0.00",
+                    "product_cost": "4.79",
+                    "product_variant": 43689564,
+                    "production_status": "normal",
+                    "quantity": 1,
+                    "reference_id": "114-2545030-4324234-1",
+                    "ship_by": "2025-12-13T02:00:00Z",
+                    "shipping_cost": "4.99",
+                    "subtotal_cost": "10.18",
+                    "total_cost": "9.18",
+                    "vat_unit_value": "0.00",
+                    "shipping_label_url": "",
+                    "shipping_label_carrier": "",
+                    "shipping_label_tracking_number": "",
+                    "platform_title": null,
+                    "platform_id": null,
+                    "product_platform_id": null,
+                    "product_variant_platform_id": null,
+                    "deleted": false,
+                    "discounts": [
+                        {
+                            "name": "Subscription",
+                            "quantity": 1,
+                            "subtotal_amount": "1.00",
+                            "total_amount": "1.00",
+                            "type": "subscription"
+                        }
+                    ],
+                    "partial_refunds": [],
+                    "print_areas": [
+                        {
+                            "key": "front",
+                            "proof_url": "",
+                            "url": "https://s.upanh.net/2025/12/08/114-2545030-4324234-1.png",
+                            "url_error": ""
+                        }
+                    ]
+                },
+                {
+                    "active_quantity": 1,
+                    "discounted_item_cost": "4.78",
+                    "discounted_product_cost": "3.79",
+                    "estimated_ship_date": "2025-12-13T02:00:00Z",
+                    "id": 373141514,
+                    "item_cost": "10.18",
+                    "item_variant": 16029,
+                    "line_item_ticket": null,
+                    "line_item_metas": [],
+                    "print_cost": "0.00",
+                    "product_cost": "4.79",
+                    "product_variant": 43689565,
+                    "production_status": "normal",
+                    "quantity": 1,
+                    "reference_id": "114-2545030-4324234-2",
+                    "ship_by": "2025-12-13T02:00:00Z",
+                    "shipping_cost": "4.99",
+                    "subtotal_cost": "10.18",
+                    "total_cost": "4.78",
+                    "vat_unit_value": "0.00",
+                    "shipping_label_url": "",
+                    "shipping_label_carrier": "",
+                    "shipping_label_tracking_number": "",
+                    "platform_title": null,
+                    "platform_id": null,
+                    "product_platform_id": null,
+                    "product_variant_platform_id": null,
+                    "deleted": false,
+                    "discounts": [
+                        {
+                            "name": "Subscription",
+                            "quantity": 1,
+                            "subtotal_amount": "1.00",
+                            "total_amount": "1.00",
+                            "type": "subscription"
                         },
-                        "variant_title": "2-side printed glass ornament / Random / Circle"
-                    }
-                ],
-                "has_tracking": false
-            }
+                        {
+                            "name": "Shipping",
+                            "quantity": 1,
+                            "subtotal_amount": "4.00",
+                            "total_amount": "4.00",
+                            "type": "shipping_v4"
+                        },
+                        {
+                            "name": "Holiday Shipping",
+                            "quantity": 1,
+                            "subtotal_amount": "0.40",
+                            "total_amount": "0.40",
+                            "type": "holiday_shipping"
+                        }
+                    ],
+                    "partial_refunds": [],
+                    "print_areas": [
+                        {
+                            "key": "front",
+                            "proof_url": "",
+                            "url": "https://s.upanh.net/2025/12/08/114-2545030-4324234-2.png",
+                            "url_error": ""
+                        }
+                    ]
+                }
+            ],
+            "original_order": null,
+            "paid_amount": "13.96",
+            "payment_status": "paid",
+            "processing_cost": "0.00",
+            "production_status": "normal",
+            "reference_id": "114-2545030-4324234",
+            "refunded_amount": "0.00",
+            "rejected_status": null,
+            "rush_production": false,
+            "forty_eight_hour_fulfillment": false,
+            "shipping_method": "economy",
+            "shop_key": "",
+            "source": "csv",
+            "status": "fulfilled",
+            "subtotal_cost": "13.96",
+            "surcharge_cost": "0.00",
+            "country_fee_cost": "0.00",
+            "shipping_label_cost": "0.00",
+            "test_order": false,
+            "total_cost": "13.96",
+            "vat_currency": "none",
+            "vat_number": "",
+            "platform_id": null,
+            "platform_name": null
         }
-    ]
+    ],
+    "paging": {
+        "next": null,
+        "previous": null,
+        "count": 1
+    }
 }
