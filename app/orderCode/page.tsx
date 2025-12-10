@@ -1,6 +1,7 @@
 // app/order-code/page.tsx
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 
 type Provider = "merchize" | "dreamship";
@@ -141,6 +142,7 @@ export default function OrderCodePage() {
         });
 
         if (!validRows.length) return;
+
 
         // Set loading + clear result/error
         setRows((prev) =>
@@ -343,6 +345,7 @@ export default function OrderCodePage() {
                         >
                             Copy tất cả Order Code
                         </button>
+
                         <button
                             type="button"
                             onClick={handleFetch}
@@ -351,6 +354,14 @@ export default function OrderCodePage() {
                         >
                             Lấy Order Code
                         </button>
+                        <Link href="/track">
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-950 shadow-sm hover:bg-emerald-400 active:bg-emerald-500 "
+                            >
+                                Chuyển qua lấy track
+                            </button>
+                        </Link>
                     </div>
                 </div>
 
@@ -439,11 +450,15 @@ export default function OrderCodePage() {
                                                     )}
                                                 </td>
                                                 <td className="border-t border-slate-900 px-2 py-1 text-[11px] md:text-xs">
-                                                    {row.status === "loading"
-                                                        ? "Đang lấy..."
-                                                        : row.status === "error"
-                                                            ? row.error || ""
-                                                            : row.result || ""}
+                                                    {row.status === "idle" &&
+                                                        !row.result &&
+                                                        row.raw.trim()
+                                                        ? "Chưa lấy"
+                                                        : row.status === "loading"
+                                                            ? "Đang lấy..."
+                                                            : row.status === "error"
+                                                                ? (row.error || "Lỗi")
+                                                                : row.status === "done" ? row.result : ""}
                                                 </td>
                                                 <td className="border-t border-slate-900 px-2 py-1 text-[11px] md:text-xs">
                                                     {row.status === "idle" && row.raw.trim()
