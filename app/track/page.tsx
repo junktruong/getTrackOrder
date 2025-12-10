@@ -522,19 +522,19 @@ export default function TrackPage() {
                             <table className="min-w-full border-collapse text-xs md:text-sm">
                                 <thead className="bg-slate-900/80">
                                     <tr>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[3rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[1rem]">
                                             #
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[18%]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
                                             Mã / dòng input
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[3rem]">
                                             Nền tảng
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[8rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
                                             Hãng vận chuyển
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[9rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
                                             <div className="flex items-center gap-1">
                                                 <span>Tracking</span>
                                                 <button
@@ -546,16 +546,16 @@ export default function TrackPage() {
                                                 </button>
                                             </div>
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[9rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[4rem]">
                                             Thời gian
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[16%]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[10rem]">
                                             Địa chỉ
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[8rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[10rem]">
                                             Trạng thái đơn
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[5rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[2rem]">
                                             Trạng thái
                                         </th>
                                     </tr>
@@ -574,11 +574,10 @@ export default function TrackPage() {
                                         rows.map((row, index) => (
                                             <tr
                                                 key={row.id}
-                                                className={
-                                                    index % 2 === 0
-                                                        ? "bg-slate-950/40"
-                                                        : "bg-slate-950/20"
-                                                }
+                                                className={`transition-colors ${index % 2 === 0
+                                                    ? "bg-slate-950/40"
+                                                    : "bg-slate-950/20"
+                                                    } hover:bg-slate-800/80`}
                                             >
                                                 <td className="border-t border-slate-900 px-2 py-1 align-top text-slate-400">
                                                     {index + 1}
