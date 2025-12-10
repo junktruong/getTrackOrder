@@ -285,7 +285,7 @@ export default function OrderCodePage() {
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100">
-            <div className="max-w-6xl mx-auto px-4 py-8 md:py-10">
+            <div className="w-full mx-3 px-4 py-8 md:py-10">
                 {/* Header */}
                 <header className="mb-6 md:mb-8">
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
@@ -296,56 +296,54 @@ export default function OrderCodePage() {
                         <span className="font-semibold">
                             external_number (Merchize) hoặc reference_id (Dreamship)
                         </span>{" "}
-                        ở bên trái. Hệ thống sẽ thử gọi{" "}
-                        <span className="font-semibold">provider ưu tiên trước</span>, nếu
-                        không tìm thấy sẽ tự động gọi sang provider còn lại.
+                        ở bên trái.
                     </p>
-                    <p className="mt-1 text-xs text-slate-500">
-                        Ưu tiên hiện tại: {priorityLabel}
-                    </p>
+
                 </header>
 
                 {/* Control bar */}
-                <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                    <div className="flex flex-wrap items-center gap-3">
-                        <label className="flex items-center gap-2 text-sm text-slate-300">
-                            <span>Ưu tiên gọi trước:</span>
-                            <select
-                                value={primaryProvider}
-                                onChange={handlePrimaryProviderChange}
-                                className="rounded-md bg-slate-900 border border-slate-700 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
-                            >
-                                <option value="merchize">
-                                    Merchize trước → Dreamship sau
-                                </option>
-                                <option value="dreamship">
-                                    Dreamship trước → Merchize sau
-                                </option>
-                            </select>
-                        </label>
+                <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
 
-                        <div className="text-xs md:text-sm text-slate-400">
-                            Dòng:{" "}
-                            <span className="font-semibold text-slate-200">
-                                {totalLines}
-                            </span>{" "}
-                            · Có dữ liệu:{" "}
-                            <span className="font-semibold text-emerald-400">
-                                {nonEmptyLines}
-                            </span>
+                    {/* ===== DIV CON 1: THIẾT LẬP ƯU TIÊN VÀ THÔNG TIN DÒNG (w-1/2) ===== */}
+                    <div className="w-full md:w-1/2 flex flex-col gap-3">
+                        {/* Nhóm A: Chọn ưu tiên */}
+                        <div className="flex flex-wrap items-center gap-3">
+                            <label className="flex items-center gap-2 text-sm text-slate-300">
+                                <span>Ưu tiên gọi trước:</span>
+                                <select
+                                    value={primaryProvider}
+                                    onChange={handlePrimaryProviderChange}
+                                    className="rounded-md bg-slate-900 border border-slate-700 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+                                >
+                                    <option value="merchize">
+                                        Merchize trước → Dreamship sau
+                                    </option>
+                                    <option value="dreamship">
+                                        Dreamship trước → Merchize sau
+                                    </option>
+                                </select>
+                            </label>
+
+                            {/* Nhóm B: Thông tin dòng */}
+                            <div className="text-xs md:text-sm text-slate-400">
+                                Dòng:{" "}
+                                <span className="font-semibold text-slate-200">
+                                    {totalLines}
+                                </span>{" "}
+                                · Có dữ liệu:{" "}
+                                <span className="font-semibold text-emerald-400">
+                                    {nonEmptyLines}
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                        <button
-                            type="button"
-                            onClick={handleCopyAll}
-                            className="rounded-md border border-slate-700 bg-slate-800 px-3 py-1 text-xs md:text-sm hover:bg-slate-700"
-                            disabled={!rows.length}
-                        >
-                            Copy tất cả Order Code
-                        </button>
 
+                    {/* ===== DIV CON 2: CÁC NÚT HÀNH ĐỘNG (w-1/2) ===== */}
+                    {/* Dùng md:w-1/2 để chiếm 50% chiều rộng */}
+                    <div className="w-full md:w-1/2 flex gap-3 justify-between items-center">
+
+                        {/* Nút Lấy Order Code (Nằm bên trái của div con này) */}
                         <button
                             type="button"
                             onClick={handleFetch}
@@ -354,21 +352,21 @@ export default function OrderCodePage() {
                         >
                             Lấy Order Code
                         </button>
-                        <Link href="/track">
-                            <button
-                                type="button"
-                                className="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-950 shadow-sm hover:bg-emerald-400 active:bg-emerald-500 "
-                            >
-                                Chuyển qua lấy track
-                            </button>
+
+                        {/* Nút Chuyển qua lấy track (Đã sửa Link) */}
+                        <Link
+                            href="/track"
+                            className="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-950 shadow-sm hover:bg-emerald-400 active:bg-emerald-500"
+                        >
+                            Chuyển qua lấy track
                         </Link>
                     </div>
                 </div>
 
                 {/* Main grid */}
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-4">
                     {/* Input side */}
-                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm">
+                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm md:col-span-1">
                         <div className="flex items-center justify-between mb-2">
                             <h2 className="text-sm font-medium text-slate-200">
                                 1. Dán External Number / Reference ID
@@ -392,7 +390,7 @@ export default function OrderCodePage() {
                     </section>
 
                     {/* Result side */}
-                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm overflow-auto">
+                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm overflow-auto md:col-span-3">
                         <div className="flex items-center justify-between mb-2">
                             <h2 className="text-sm font-medium text-slate-200">
                                 2. Order Code theo từng dòng
@@ -414,6 +412,14 @@ export default function OrderCodePage() {
                                         </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[35%]">
                                             Order Code / Order ID
+                                            <button
+                                                type="button"
+                                                onClick={handleCopyAll}
+                                                className="text-[10px] md:text-xs px-1 py-0.5 border border-slate-600 rounded hover:bg-slate-800"
+                                                disabled={!rows.length}
+                                            >
+                                                Copy
+                                            </button>
                                         </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
                                             Trạng thái
