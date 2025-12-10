@@ -10,8 +10,11 @@ type Row = {
     raw: string; // đúng y dòng input
     platform: Platform;
     status: "idle" | "loading" | "done" | "error";
-    result?: string; // dùng làm cột Tracking (chỉ chứa mã track)
+    result?: string; // tracking number
     carrier?: string; // hãng vận chuyển
+    time?: string; // thời gian (từ Merchize)
+    address?: string; // địa chỉ (từ Merchize)
+    statusOrder?: string; // trạng thái đơn (từ Merchize)
     error?: string;
 };
 
@@ -39,6 +42,9 @@ type MerchizeTrackResultItem = {
     success: boolean;
     error?: string;
     pkg?: MerchizePackageLight | null;
+    time?: string | null;
+    address?: string | null;
+    statusOrder?: string | null;
 };
 
 // Dreamship types light cho UI
@@ -109,7 +115,7 @@ const formatMerchizeResult = (pkg: MerchizePackageLight): string => {
 // Dreamship: lấy tracking đầu tiên trong fulfillments -> trackings
 const extractDreamshipTracking = (
     order: DreamshipOrderLight
-): { carrier: string; tracking: string } => {
+): { carrier: string; tracking: string; status: string; date: string } => {
     const fulfillments = order.fulfillments ?? [];
     for (const f of fulfillments) {
         const trackings = f.trackings ?? [];
@@ -117,13 +123,22 @@ const extractDreamshipTracking = (
             const t = trackings[0];
             const carrier = (t.carrier ?? "").toString().toUpperCase();
             const tracking = (t.tracking_number ?? "").toString();
+            const date = (t.created_at ?? "").toString();
+            const dateObject = date ? new Date(date) : new Date("2222-2-2");
+
+            // 2. Lấy ngày (date) và tháng (month), sau đó định dạng
+            const day = String(dateObject.getUTCDate()).padStart(2, '0');
+            const month = String(dateObject.getUTCMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+
+            const newTimeFormat = `${day}-${month}`;
+            const status = (t.status ?? "").toString();
             if (tracking) {
-                return { carrier, tracking };
+                return { carrier, tracking, date: newTimeFormat, status };
             }
         }
     }
     // Không có tracking => coi như chưa có, trả rỗng
-    return { carrier: "", tracking: "" };
+    return { carrier: "", tracking: "", date: "", status: "" };
 };
 
 export default function TrackPage() {
@@ -149,6 +164,9 @@ export default function TrackPage() {
                 status: existing?.status ?? "idle",
                 result: existing?.result,
                 carrier: existing?.carrier,
+                time: existing?.time,
+                address: existing?.address,
+                statusOrder: existing?.statusOrder,
                 error: existing?.error,
             };
         });
@@ -168,13 +186,12 @@ export default function TrackPage() {
         syncRowsFromInput(rawInput, value);
     };
 
-    // 🔹 NÚT COPY TOÀN BỘ CỘT TRACKING
+    // Nút copy toàn bộ tracking
     const handleCopyTracking = async () => {
         const text = rows.map((r) => r.result ?? "").join("\n");
 
         try {
             await navigator.clipboard.writeText(text);
-            // Nếu muốn có thông báo thì có thể thêm toast / state ở đây
         } catch (err) {
             console.error("Failed to copy tracking list:", err);
         }
@@ -195,6 +212,9 @@ export default function TrackPage() {
                         error: undefined,
                         result: undefined,
                         carrier: undefined,
+                        time: undefined,
+                        address: undefined,
+                        statusOrder: undefined,
                     }
                     : {
                         ...r,
@@ -202,6 +222,9 @@ export default function TrackPage() {
                         error: undefined,
                         result: undefined,
                         carrier: undefined,
+                        time: undefined,
+                        address: undefined,
+                        statusOrder: undefined,
                     }
             )
         );
@@ -316,12 +339,19 @@ export default function TrackPage() {
                             : "";
                     const tracking = formatMerchizeResult(pkg);
 
+                    const time = item.time ?? "";
+                    const address = item.address ?? "";
+                    const statusOrder = item.statusOrder ?? "";
+
                     return {
                         ...row,
                         status: "done",
                         error: undefined,
                         result: tracking,
                         carrier,
+                        time,
+                        address,
+                        statusOrder,
                     };
                 }
 
@@ -361,7 +391,7 @@ export default function TrackPage() {
                         };
                     }
 
-                    const { carrier, tracking } = extractDreamshipTracking(item.order);
+                    const { carrier, tracking, date, status } = extractDreamshipTracking(item.order);
 
                     // Nếu không có tracking => rỗng nhưng vẫn "done"
                     return {
@@ -370,6 +400,9 @@ export default function TrackPage() {
                         error: undefined,
                         result: tracking || "",
                         carrier: carrier || "",
+                        time: date || "",
+                        statusOrder: status || ""
+
                     };
                 }
 
@@ -388,15 +421,15 @@ export default function TrackPage() {
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100">
-            <div className="max-w-6xl mx-auto px-4 py-8 md:py-10">
+            <div className="max-w-6xl mx-3 px-4 py-8 md:py-10">
                 {/* Header */}
                 <header className="mb-6 md:mb-8">
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
                         Lấy Track PrintWay / Merchize / DreamShip
                     </h1>
                     <p className="mt-2 text-sm md:text-base text-slate-400">
-                        Dán cột mã đơn / tracking từ Google Sheet vào ô bên trái. Hệ thống sẽ
-                        trả kết quả tương ứng theo từng dòng ở cột bên phải.
+                        Dán cột mã đơn / tracking từ Google Sheet vào ô bên trái. Hệ thống
+                        sẽ trả kết quả tương ứng theo từng dòng ở cột bên phải.
                     </p>
                 </header>
 
@@ -440,9 +473,9 @@ export default function TrackPage() {
                 </div>
 
                 {/* Main grid */}
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-4">
                     {/* Input side */}
-                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm">
+                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm md:col-span-1">
                         <div className="flex items-center justify-between mb-2">
                             <h2 className="text-sm font-medium text-slate-200">
                                 1. Dán dữ liệu từ Sheet
@@ -457,16 +490,16 @@ export default function TrackPage() {
                             rows={18}
                             spellCheck={false}
                             className="w-full resize-none rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm font-mono text-slate-100 outline-none focus:ring-2 focus:ring-emerald-500"
-                            placeholder={`VD:\nRQ-54278-39427 (Merchize)\nPW102035 (Printway)\n322265507 (Dreamship)\n...`}
+                            placeholder={`VD:\nRQ-54278-39427\nRZ-62395-94593\nPW102035\n322799548`}
                         />
                         <p className="mt-2 text-xs text-slate-500">
-                            * Dán nguyên cột như trên Google Sheet. Hệ thống sẽ giữ đúng thứ tự
-                            và số dòng.
+                            * Dán nguyên cột như trên Google Sheet. Hệ thống sẽ giữ đúng thứ
+                            tự và số dòng.
                         </p>
                     </section>
 
                     {/* Result side */}
-                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm overflow-auto">
+                    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-3 md:p-4 shadow-sm overflow-auto md:col-span-3">
                         <div className="flex items-center justify-between mb-2">
                             <h2 className="text-sm font-medium text-slate-200">
                                 2. Kết quả theo từng dòng
@@ -483,7 +516,7 @@ export default function TrackPage() {
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[3rem]">
                                             #
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[26%]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[18%]">
                                             Mã / dòng input
                                         </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[6rem]">
@@ -492,7 +525,7 @@ export default function TrackPage() {
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[8rem]">
                                             Hãng vận chuyển
                                         </th>
-                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[10rem]">
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[9rem]">
                                             <div className="flex items-center gap-1">
                                                 <span>Tracking</span>
                                                 <button
@@ -504,6 +537,15 @@ export default function TrackPage() {
                                                 </button>
                                             </div>
                                         </th>
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[9rem]">
+                                            Thời gian
+                                        </th>
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[16%]">
+                                            Địa chỉ
+                                        </th>
+                                        <th className="border-b border-slate-800 px-2 py-1 text-left w-[8rem]">
+                                            Trạng thái đơn
+                                        </th>
                                         <th className="border-b border-slate-800 px-2 py-1 text-left w-[5rem]">
                                             Trạng thái
                                         </th>
@@ -513,7 +555,7 @@ export default function TrackPage() {
                                     {rows.length === 0 ? (
                                         <tr>
                                             <td
-                                                colSpan={6}
+                                                colSpan={9}
                                                 className="px-3 py-4 text-center text-slate-500"
                                             >
                                                 Chưa có dữ liệu. Dán mã đơn / tracking vào ô bên trái.
@@ -560,6 +602,15 @@ export default function TrackPage() {
                                                                 ? row.error || "Lỗi"
                                                                 : row.result || ""}
                                                 </td>
+                                                <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs">
+                                                    {row.time || ""}
+                                                </td>
+                                                <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs break-all">
+                                                    {row.address || ""}
+                                                </td>
+                                                <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs">
+                                                    {row.statusOrder || ""}
+                                                </td>
                                                 <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-[11px]">
                                                     {row.status === "idle" && row.raw.trim()
                                                         ? "Idle"
@@ -580,7 +631,9 @@ export default function TrackPage() {
 
                         <p className="mt-2 text-xs text-slate-500">
                             * Merchize & Dreamship đã được nối API. PrintWay tạm thời đang để
-                            &quot;Chưa triển khai&quot;.
+                            &quot;Chưa triển khai&quot;. Các cột Thời gian / Địa chỉ /
+                            Trạng thái đơn hiện chỉ fill cho Merchize (theo dữ liệu API trả
+                            về).
                         </p>
                     </section>
                 </div>
