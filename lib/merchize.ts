@@ -46,6 +46,11 @@ export type MerchizeOrderDetailPackage = {
     // cho phép thêm field khác không được document
 
 };
+export type MerchizeApiResponseHistory = {
+    time?: string | null;
+    location?: string | null;
+    message?: string | null;
+}
 
 
 
@@ -90,6 +95,7 @@ export async function getMerchizeTrackings(
 
 
     const data = (await res.json()) as MerchizeApiResponse;
+
     console.log(data);
 
     return data;
@@ -109,7 +115,7 @@ export async function getOrderDetails(
         throw new Error("MERCHIZE_ACCESS_TOKEN is not set in environment");
     }
 
-    console.log("extermal : ", orders);
+
     const res = await fetch(
         `${baseUrl}/order/external/orders/list-orders-detail`,
         {
@@ -130,6 +136,74 @@ export async function getOrderDetails(
 
 
     const data = (await res.json()) as MerchizeApiResponse;
+    // console.log(data);
 
     return data;
+}
+
+
+export async function getHistoryOrder(orderCode: string, idTrack: string | null): Promise<MerchizeApiResponseHistory> {
+    const baseUrl = process.env.MERCHIZE_BASE_URL;
+    const token = process.env.MERCHIZE_ACCESS_TOKEN;
+
+    if (!baseUrl) {
+        throw new Error("MERCHIZE_BASE_URL is not set in environment");
+    }
+
+    if (!token) {
+        throw new Error("MERCHIZE_ACCESS_TOKEN is not set in environment");
+    }
+
+
+    const res = await fetch(
+        `${baseUrl}/order/orders/search/v3?code=${orderCode}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            cache: "no-store",
+        }
+    );
+
+    if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(`Merchize API error: ${res.status} ${text}`);
+    }
+
+
+    const dataOrder = (await res.json()) as MerchizeApiResponse;
+
+    const id = (dataOrder.data as any).orders[0]._id
+
+
+
+    // console.log(data);
+
+    const resHis = await fetch(
+        `${baseUrl}/order/orders/${id}/fulfillments/${idTrack}/shipment-status`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            cache: "no-store",
+        }
+    );
+    const data = (await resHis.json()) as MerchizeApiResponse;
+    const histories = (data.data as any).histories;
+
+
+
+    const latestHistory = histories.reduce((latest: any, item: any) => {
+        return new Date(item.time) > new Date(latest.time) ? item : latest;
+    }, histories[0]);
+
+
+
+    return latestHistory;
+
+
 }

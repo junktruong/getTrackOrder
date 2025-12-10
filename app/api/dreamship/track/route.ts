@@ -15,6 +15,9 @@ export type DreamshipTrackResultItem = {
     success: boolean;
     error?: string;
     order?: DreamshipOrder | null;
+    time?: string | null;
+    address?: string | null;
+    statusOrder?: string | null;
 };
 
 export async function POST(req: NextRequest) {

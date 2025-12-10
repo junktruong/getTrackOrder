@@ -20,6 +20,7 @@ type OrderCodeResultItem = {
     error?: string;
     code?: string | null;
     status: string | null;
+
 };
 
 function extractOrderCodeFromPackage(pkg: MerchizeOrderDetailPackage): string | null {
