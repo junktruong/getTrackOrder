@@ -142,6 +142,7 @@ export default function OrderCodePage() {
 
         if (!validRows.length) return;
 
+
         // Set loading + clear result/error
         setRows((prev) =>
             prev.map((r) =>
@@ -439,11 +440,15 @@ export default function OrderCodePage() {
                                                     )}
                                                 </td>
                                                 <td className="border-t border-slate-900 px-2 py-1 text-[11px] md:text-xs">
-                                                    {row.status === "loading"
-                                                        ? "Đang lấy..."
-                                                        : row.status === "error"
-                                                            ? row.error || ""
-                                                            : row.result || ""}
+                                                    {row.status === "idle" &&
+                                                        !row.result &&
+                                                        row.raw.trim()
+                                                        ? "Chưa lấy"
+                                                        : row.status === "loading"
+                                                            ? "Đang lấy..."
+                                                            : row.status === "error"
+                                                                ? (row.error || "Lỗi")
+                                                                : row.status === "done" ? row.result : ""}
                                                 </td>
                                                 <td className="border-t border-slate-900 px-2 py-1 text-[11px] md:text-xs">
                                                     {row.status === "idle" && row.raw.trim()
