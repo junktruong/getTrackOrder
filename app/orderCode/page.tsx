@@ -441,11 +441,10 @@ export default function OrderCodePage() {
                                         rows.map((row, index) => (
                                             <tr
                                                 key={row.id}
-                                                className={
-                                                    index % 2 === 0
-                                                        ? "bg-slate-950/40"
-                                                        : "bg-slate-950/20"
-                                                }
+                                                className={`transition-colors ${index % 2 === 0
+                                                    ? "bg-slate-950/40"
+                                                    : "bg-slate-950/20"
+                                                    } hover:bg-slate-800/80`}
                                             >
                                                 <td className="border-t border-slate-900 px-2 py-1 text-slate-400">
                                                     {index + 1}
