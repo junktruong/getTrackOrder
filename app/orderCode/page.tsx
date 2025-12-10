@@ -1,6 +1,7 @@
 // app/order-code/page.tsx
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 
 type Provider = "merchize" | "dreamship";
@@ -344,6 +345,7 @@ export default function OrderCodePage() {
                         >
                             Copy tất cả Order Code
                         </button>
+
                         <button
                             type="button"
                             onClick={handleFetch}
@@ -352,6 +354,14 @@ export default function OrderCodePage() {
                         >
                             Lấy Order Code
                         </button>
+                        <Link href="/track">
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-950 shadow-sm hover:bg-emerald-400 active:bg-emerald-500 "
+                            >
+                                Chuyển qua lấy track
+                            </button>
+                        </Link>
                     </div>
                 </div>
 
