@@ -422,7 +422,7 @@ export default function TrackPage() {
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100">
-            <div className="max-w-6xl mx-3 px-4 py-8 md:py-10">
+            <div className="w-full mx-3 px-4 py-8 md:py-10">
                 {/* Header */}
                 <header className="mb-6 md:mb-8">
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
