@@ -47,6 +47,7 @@ export type MerchizeOrderDetailPackage = {
 
 };
 export type MerchizeApiResponseHistory = {
+    _id?: string | null;
     time?: string | null;
     location?: string | null;
     message?: string | null;
@@ -211,11 +212,12 @@ export async function getHistoryOrder(orderCode: string, idTrack: string | null)
 
 
 
-            return latestHistory;
+            return { ...latestHistory, _id: id };
 
         }
 
         return {
+            _id: id,
             time: "Chưa có",
             location: "Chưa có",
             message: "Chưa có"
@@ -224,6 +226,7 @@ export async function getHistoryOrder(orderCode: string, idTrack: string | null)
 
 
     return {
+        _id: id,
         time: "Khác US",
         location: "Khác US",
         message: "Khác US"

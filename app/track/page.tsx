@@ -8,6 +8,7 @@ type Platform = "auto" | "printway" | "merchize" | "dreamship";
 
 type Row = {
     id: number;
+    _id?: string;
     raw: string; // đúng y dòng input
     platform: Platform;
     status: "idle" | "loading" | "done" | "error";
@@ -43,6 +44,7 @@ type MerchizeTrackResultItem = {
     success: boolean;
     error?: string;
     pkg?: MerchizePackageLight | null;
+    _id?: string;
     time?: string | null;
     address?: string | null;
     statusOrder?: string | null;
@@ -142,10 +144,54 @@ const extractDreamshipTracking = (
     return { carrier: "", tracking: "", date: "", status: "" };
 };
 
+
 export default function TrackPage() {
     const [rawInput, setRawInput] = useState<string>("");
     const [globalPlatform, setGlobalPlatform] = useState<Platform>("auto");
     const [rows, setRows] = useState<Row[]>([]);
+    const [copied, setCopied] = useState(false);
+
+
+    // Hàm này mở URL trong tab mới và KHÔNG chuyển focus sang tab đó
+    const openInNewTabButKeepFocus = (carrier: string, orderCode: string | undefined) => {
+
+        console.log("code", orderCode);
+
+
+        if (carrier === "merchize") {
+            // Mở tab mới
+            const newWindow = window.open(`https://seller.merchize.com/a/orders/${orderCode}`, '_blank', 'noopener=yes,noreferrer=yes');
+
+        }
+        // Nếu cửa sổ mới mở thành công, chúng ta KHÔNG gọi newWindow.focus()
+        // Hàm open() thường không tự động chuyển focus nếu được gọi từ một hàm xử lý sự kiện.
+
+        // Cài đặt này giúp tăng cường tính bảo mật và trải nghiệm
+
+        if (carrier === "dreamship") {
+            const newWindow = window.open(`https://app.dreamship.com/app/orders/${orderCode}`, '_blank', 'noopener=yes,noreferrer=yes');
+
+        }
+        return false; // Trả về false để ngăn chặn hành vi mặc định của form/link (nếu có)
+    };
+
+
+
+    const handleCopyClick = async (content: string) => {
+        if (content) {
+            await copyToClipboard(content);
+
+        }
+    };
+
+    const copyToClipboard = (text: string) => {
+        if (!navigator.clipboard) {
+            // Fallback cho trình duyệt cũ hơn
+            console.error('Clipboard API not available');
+            return;
+        }
+        return navigator.clipboard.writeText(text);
+    };
 
     const syncRowsFromInput = (value: string, platform: Platform) => {
         const lines = value.split("\n");
@@ -343,9 +389,12 @@ export default function TrackPage() {
                     const time = item.time ?? "";
                     const address = item.address ?? "";
                     const statusOrder = item.statusOrder ?? "";
+                    const _id = item._id;
+
 
                     return {
                         ...row,
+                        _id,
                         status: "done",
                         error: undefined,
                         result: tracking,
@@ -582,7 +631,9 @@ export default function TrackPage() {
                                                 <td className="border-t border-slate-900 px-2 py-1 align-top text-slate-400">
                                                     {index + 1}
                                                 </td>
-                                                <td className="border-t border-slate-900 px-2 py-1 align-top font-mono text-[11px] md:text-xs break-all">
+                                                <td className="border-t border-slate-900 px-2 py-1 align-top font-mono text-[11px] md:text-xs break-all cursor-pointer hover:bg-slate-700 transition-colors"
+                                                    onClick={() => openInNewTabButKeepFocus(row.platform, (row.platform === "merchize") ? row._id : row.raw || "")}
+                                                >
                                                     {row.raw || (
                                                         <span className="text-slate-500">—</span>
                                                     )}
@@ -599,7 +650,11 @@ export default function TrackPage() {
                                                 <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs">
                                                     {row.carrier || ""}
                                                 </td>
-                                                <td className="border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs">
+                                                <td className={` select-none border-t border-slate-900 px-2 py-1 align-top text-[11px] md:text-xs ${row.result ? 'cursor-pointer hover:bg-slate-700 transition-colors' : ''
+                                                    }`}
+                                                    onClick={() => handleCopyClick(row.result || "")}
+                                                    title={(copied ? "Đã Copy!" : "Click để Copy")}
+                                                >
                                                     {row.status === "idle" &&
                                                         !row.result &&
                                                         row.raw.trim()
