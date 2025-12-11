@@ -193,17 +193,39 @@ export async function getHistoryOrder(orderCode: string, idTrack: string | null)
         }
     );
     const data = (await resHis.json()) as MerchizeApiResponse;
-    const histories = (data.data as any).histories;
+
+    // console.log(data.success);
+
+    if ((data as any).success) {
+        const histories = (data.data as any).histories;
 
 
 
-    const latestHistory = histories.reduce((latest: any, item: any) => {
-        return new Date(item.time) > new Date(latest.time) ? item : latest;
-    }, histories[0]);
+
+        if (histories.length > 0) {
+            console.log("ok");
+
+            const latestHistory = histories.reduce((latest: any, item: any) => {
+                return new Date(item.time) > new Date(latest.time) ? item : latest;
+            }, histories[0]);
 
 
 
-    return latestHistory;
+            return latestHistory;
+
+        }
+
+        return {
+            time: "Chưa có",
+            location: "Chưa có",
+            message: "Chưa có"
+        }
+    }
 
 
+    return {
+        time: "Khác US",
+        location: "Khác US",
+        message: "Khác US"
+    }
 }
